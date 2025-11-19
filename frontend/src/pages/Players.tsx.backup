@@ -1,0 +1,30 @@
+import { useState } from 'react';
+import Layout from '../components/Layout';
+import toast from 'react-hot-toast';
+import api from '../lib/api';
+import { exportPlayersToPDF } from '../lib/pdfUtils';
+
+export default function Players() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFilter, setSelectedFilter] = useState('all');
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [selectedPlayer, setSelectedPlayer] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    dateOfBirth: '',
+    gender: 'male',
+    beltRank: '',
+    weight: '',
+    dojo: '',
+    coach: '',
+    emergencyContact: {
+      name: '',
+      phone: '',
+      relationship: '',
+    },
+    medicalInfo: '',
+  });
